@@ -1,11 +1,11 @@
 $('#submit').on('click', function(event){
 
-    let bank_val = $('#bank').val();
-    console.log(bank_val)
+    let student_val = $('#student').val();
+    console.log(student_val)
     let formData = new FormData();
-    formData.append('bankAccountName', bank_val);
+    formData.append('nickname', student_val);
 
-    fetch('http://192.168.64.2/php-api/advance.php', {
+    fetch('http://192.168.64.2/workshop-php-api/advance.php', {
         method: 'post',
         body: formData
     }).then(async (result) => {
@@ -17,8 +17,9 @@ $('#submit').on('click', function(event){
                 data.forEach((element, key) => {
                     $('tbody').append(`
                         <tr>
-                            <th>${element.bank_branch} (${element.bank_name})</th>
-                            <th>${element.bank_account_name}</th>
+                            <th>${element.code}</th>
+                            <th>${element.nickname}</th>
+                            <th>${element.fullname}</th>
                         </tr>
                     `);
                 });
